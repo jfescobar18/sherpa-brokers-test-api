@@ -44,7 +44,7 @@ exports.addCategory = async function (req, res) {
         await category.save();
 
         return res.status(HttpCodes.OK).jsonp({
-            "user": category,
+            "product": category,
             "errors": null
         })
     } catch (error) {
@@ -98,4 +98,16 @@ exports.removeCategory = async function (req, res) {
             "errors": error.message
         });
     }
+}
+
+exports.getCategoryName = (CategoryId) => {
+    const _category = await db.Categories.findAll({
+        where: {
+            CategoryId: CategoryId
+        }
+    });
+
+    const category = _category.length > 0 ? _category[0].dataValues : null;
+
+    return category.ProductName;
 }
