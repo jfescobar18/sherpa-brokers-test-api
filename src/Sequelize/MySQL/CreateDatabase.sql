@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `Admins` (
 
 -- Se@d0gs4rena --
 INSERT INTO `Admins` (`AdminId`, `AdminUsername`, `AdminPassword`)
-SELECT NULL, "soundmaker", "$2b$10$pEbe5m2e6i2LqvmbLs7H7.wlgN84l5LmIWBbVbG1kXfRTIVFopqnC" FROM DUAL
+SELECT NULL, "jfescobar18@icloud.com", "$2b$10$pEbe5m2e6i2LqvmbLs7H7.wlgN84l5LmIWBbVbG1kXfRTIVFopqnC" FROM DUAL
 WHERE NOT EXISTS (SELECT `AdminUsername`
                     FROM `Admins`
                     WHERE `AdminUsername` = "soundmaker" LIMIT 1);
