@@ -3,7 +3,7 @@ const { ConsoleError } = require("./ConsoleConfig");
 const { getCategoryName } = require("../Controllers/CategoriesController");
 const { initEmail } = require("../Utils/Emailer");
 
-exports.checkProductChanges = (productBody) => {
+exports.checkProductChanges = async (productBody) => {
     try {
         const _product = await db.Products.findAll({
             where: {
