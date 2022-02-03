@@ -3,3 +3,5 @@ sequelize-auto -o "./src/Models" --indentation 4 -d sherpa-brokers-test-db -h sh
 docker build . -t sherpa-brokers-test-api
 
 docker run -dp 3000:3000 sherpa-brokers-test-api
+
+docker-compose up --build  

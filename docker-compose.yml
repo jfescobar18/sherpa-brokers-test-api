@@ -7,3 +7,5 @@ services:
       - .:/usr/src/
       - /usr/src/node_modules/
     container_name: sherpa-brokers-test-api
+    ports:
+      - 3000:3000
