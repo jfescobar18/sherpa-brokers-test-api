@@ -8,12 +8,13 @@ exports.getProducts = async (req, res) => {
         const products = await db.Products.findAll();
 
         if (!req.headers.authorization) {
+            const stringLog = {
+                "RequestedAt": Date.now(),
+                "ProductRequestType": "List",
+                "ProductId": null
+            }
             const log = db.ProductsChangeLog.build({
-                ProductsChangeLogDetails: {
-                    "RequestedAt": Date.now(),
-                    "ProductRequestType": "List",
-                    "ProductId": null
-                }
+                ProductsChangeLogDetails: JSON.stringify(stringLog)
             });
             await log.save();
         }
@@ -39,12 +40,13 @@ exports.getProduct = async (req, res) => {
         });
 
         if (!req.headers.authorization) {
+            const stringLog = {
+                "RequestedAt": Date.now(),
+                "ProductRequestType": "Single",
+                "ProductId": req.params.ProductId
+            }
             const log = db.ProductsChangeLog.build({
-                ProductsChangeLogDetails: {
-                    "RequestedAt": Date.now(),
-                    "ProductRequestType": "Single",
-                    "ProductId": req.params.ProductId
-                }
+                ProductsChangeLogDetails: JSON.stringify(stringLog)
             });
             await log.save();
         }
