@@ -34,6 +34,9 @@ db.instance = instance;
 db.Op = Op;
 
 db.Admins = require("../Models/Admins")(instance, Sequelize.DataTypes);
+db.Categories = require("../Models/Categories")(instance, Sequelize.DataTypes);
+db.Products = require("../Models/Products")(instance, Sequelize.DataTypes);
+db.ProductsChangeLog = require("../Models/ProductsChangeLog")(instance, Sequelize.DataTypes);
 
 db.instance.sync({ force: false })
     .then(() => {
