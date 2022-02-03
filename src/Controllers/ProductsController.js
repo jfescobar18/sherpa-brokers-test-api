@@ -7,6 +7,17 @@ exports.getProducts = async (req, res) => {
     try {
         const products = await db.Products.findAll();
 
+        if (!req.headers.authorization) {
+            const log = db.ProductsChangeLog.build({
+                ProductsChangeLogDetails: {
+                    "RequestedAt": Date.now(),
+                    "ProductRequestType": "List",
+                    "ProductId": null
+                }
+            });
+            await log.save();
+        }
+
         return res.status(HttpCodes.OK).jsonp({
             "products": products
         });
@@ -26,6 +37,17 @@ exports.getProduct = async (req, res) => {
                 ProductId: req.params.ProductId
             }
         });
+
+        if (!req.headers.authorization) {
+            const log = db.ProductsChangeLog.build({
+                ProductsChangeLogDetails: {
+                    "RequestedAt": Date.now(),
+                    "ProductRequestType": "Single",
+                    "ProductId": req.params.ProductId
+                }
+            });
+            await log.save();
+        }
 
         return res.status(HttpCodes.OK).jsonp({
             "product": product.length > 0 ? product[0].dataValues : null
@@ -60,7 +82,7 @@ exports.addProduct = async (req, res) => {
 exports.editProduct = async (req, res) => {
     try {
         checkProductChanges(req.body);
-        
+
         await db.Products.update({
             ProductName: req.body.ProductName,
             ProductPrice: req.body.ProductPrice,
