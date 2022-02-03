@@ -1,7 +1,7 @@
 const db = require("../Sequelize/database");
 const { ConsoleError } = require("./ConsoleConfig");
-import { getCategoryName } from "../Controllers/CategoriesController";
-import { initEmail } from "../Utils/Emailer";
+const { getCategoryName } = require("../Controllers/CategoriesController");
+const { initEmail } = require("../Utils/Emailer");
 
 exports.checkProductChanges = (productBody) => {
     try {

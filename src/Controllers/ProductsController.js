@@ -1,6 +1,7 @@
 const HttpCodes = require("../Utils/HttpCodes");
 const ResponseCodes = require("../Utils/ResponseCodes");
 const db = require("../Sequelize/database");
+const { checkProductChanges } = require("../Utils/ComposeEmail")
 
 exports.getProducts = async (req, res) => {
     try {
