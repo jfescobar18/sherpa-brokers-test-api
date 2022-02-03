@@ -1,0 +1,23 @@
+version: '3.2'
+
+services:
+  node:
+    build: ./
+    environment:
+      #General
+      - TOKEN=pwonTvTjYv9RjzujOZ8OE1erQPLZSjfM
+      - PORT=3000
+      #Batabase
+      - AWS_DB_HOST=sherpa-brokers-test-db.cg2clmjvpgdz.us-east-2.rds.amazonaws.com
+      - AWS_DB_PORT=3306
+      - AWS_DB_USER=sherpa-brokers-user
+      - AWS_DB_SECRET=Se@d0gs4rena
+      - AWS_DB=sherpa-brokers-test-db
+    volumes: 
+      - .:/usr/src/
+      - /usr/src/node_modules/
+    container_name: sherpa-brokers-test-api
+    ports:
+      - 3000:3000
+      - 80:80
+      - 443:443
