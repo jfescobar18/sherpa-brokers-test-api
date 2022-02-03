@@ -1,17 +1,11 @@
 const HttpCodes = require("../Utils/HttpCodes");
 const ResponseCodes = require("../Utils/ResponseCodes");
 const db = require("../Sequelize/database");
-const { checkProductChanges } = require("../Utils/ComposeEmail");
-const Categories = require("../Models/Categories");
+const { checkProductChanges } = require("../Utils/ComposeEmail")
 
 exports.getProducts = async (req, res) => {
     try {
-        const products = await db.Products.findAll({
-            include: {
-                model: Categories,
-                attributes: ['CategoryName']
-            }
-        });
+        const products = await db.Products.findAll();
 
         if (!req.headers.authorization) {
             const stringLog = {
@@ -42,10 +36,6 @@ exports.getProduct = async (req, res) => {
         const product = await db.Products.findAll({
             where: {
                 ProductId: req.params.ProductId
-            },
-            include: {
-                model: Categories,
-                attributes: ['CategoryName']
             }
         });
 
