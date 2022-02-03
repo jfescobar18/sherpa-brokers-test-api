@@ -38,19 +38,19 @@ CREATE TABLE IF NOT EXISTS `Products` (
         ON UPDATE NO ACTION
 );
 
-INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`. `CategoryId`)
+INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`, `CategoryId`)
 SELECT NULL, "Coffee", "1", 1 FROM DUAL
 WHERE NOT EXISTS (SELECT `ProductName` 
                     FROM `Products` 
                     WHERE `ProductName` = "Coffee" LIMIT 1);
 
-INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`. `CategoryId`)
+INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`, `CategoryId`)
 SELECT NULL, "Banana", "1", 2 FROM DUAL
 WHERE NOT EXISTS (SELECT `ProductName` 
                     FROM `Products` 
                     WHERE `ProductName` = "Banana" LIMIT 1);
 
-INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`. `CategoryId`)
+INSERT INTO `Products` (`ProductId`, `ProductName`, `ProductPrice`, `CategoryId`)
 SELECT NULL, "Beef", "8", 3 FROM DUAL
 WHERE NOT EXISTS (SELECT `ProductName` 
                     FROM `Products` 
