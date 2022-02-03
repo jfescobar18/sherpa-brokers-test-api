@@ -23,4 +23,4 @@ ENV HOST_SMTP smtp.gmail.com
 ENV USER_SMTP fraescruz@gmail.com
 ENV PASSWORD_SMTP dqpijtefjzobqimb
 
-EXPOSE 3000
+EXPOSE 443
