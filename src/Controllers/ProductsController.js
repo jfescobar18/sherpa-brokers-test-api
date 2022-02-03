@@ -60,6 +60,7 @@ exports.addProduct = async (req, res) => {
 exports.editProduct = async (req, res) => {
     try {
         checkProductChanges(req.body);
+        
         await db.Products.update({
             ProductName: req.body.ProductName,
             ProductPrice: req.body.ProductPrice,

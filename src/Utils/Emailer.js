@@ -26,13 +26,15 @@ const composeEmail = (ProductName, Body) => {
         emailComposed.body = emailComposed.body.toString();
         emailComposed.body = emailComposed.body.replace("{ProductName}", ProductName);
         emailComposed.body = emailComposed.body.replace("{Body}", Body);
+
+        return emailComposed;
     }
     catch (error) {
         throw new Error(error);
     }
 }
 
-const sendEmail = async function (subject, text, html) {
+const sendEmail = async (subject, text, html) => {
     try {
         let config = {
             host: process.env.HOST_SMTP,
@@ -48,7 +50,8 @@ const sendEmail = async function (subject, text, html) {
         const admins = await db.Admins.findAll();
         let info;
 
-        admins.forEach(admin => {
+        await Promise.all(admins.map(async (admin) => {
+            console.log(admin);
             info = await transporter.sendMail({
                 from: `Sherpa Brokers Test 🗃 <${process.env.USER_SMTP}>`,
                 to: admin.dataValues.AdminUsername,
@@ -56,7 +59,7 @@ const sendEmail = async function (subject, text, html) {
                 text: text,
                 html: html,
             });
-        });
+        }));
 
         return info;
     }

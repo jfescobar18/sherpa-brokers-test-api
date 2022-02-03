@@ -38,7 +38,7 @@ exports.checkProductChanges = async (productBody) => {
         }
 
         if (productHasChanged) {
-            initEmail(product.ProductName, changesHistory);
+            initEmail(product.ProductName, changesHistory).then((res) => console.log(res)).catch((err) => console.log(err));
         }
     } catch (error) {
         console.log(ConsoleError, error.message);

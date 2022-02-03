@@ -21,6 +21,6 @@ ENV AWS_DB_USER sherpa-brokers-user
 ENV AWS_DB_SECRET Se@d0gs4rena
 ENV HOST_SMTP smtp.gmail.com
 ENV USER_SMTP fraescruz@gmail.com
-ENV PASSWORD_SMTP ANTOHE2011040399
+ENV PASSWORD_SMTP dqpijtefjzobqimb
 
 EXPOSE 3000
