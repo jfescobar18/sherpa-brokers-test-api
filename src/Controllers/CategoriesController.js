@@ -2,7 +2,7 @@ const HttpCodes = require("../Utils/HttpCodes");
 const ResponseCodes = require("../Utils/ResponseCodes");
 const db = require("../Sequelize/database");
 
-exports.getCategories = async function (req, res) {
+exports.getCategories = async (req, res) => {
     try {
         const categories = await db.Categories.findAll();
 
@@ -18,7 +18,7 @@ exports.getCategories = async function (req, res) {
     }
 }
 
-exports.getCategory = async function (req, res) {
+exports.getCategory = async (req, res) => {
     try {
         const category = await db.Categories.findAll({
             where: {
@@ -38,7 +38,7 @@ exports.getCategory = async function (req, res) {
     }
 }
 
-exports.addCategory = async function (req, res) {
+exports.addCategory = async (req, res) => {
     try {
         const category = db.Categories.build(req.body);
         await category.save();
@@ -56,7 +56,7 @@ exports.addCategory = async function (req, res) {
     }
 }
 
-exports.editCategory = async function (req, res) {
+exports.editCategory = async (req, res) => {
     try {
         await db.Categories.update({
             CategoryName: req.body.CategoryName
@@ -80,7 +80,7 @@ exports.editCategory = async function (req, res) {
     }
 }
 
-exports.removeCategory = async function (req, res) {
+exports.removeCategory = async (req, res) => {
     try {
         await db.Categories.destroy({
             where: {
@@ -100,7 +100,7 @@ exports.removeCategory = async function (req, res) {
     }
 }
 
-exports.getCategoryName = (CategoryId) => {
+exports.getCategoryName = async (CategoryId) => {
     const _category = await db.Categories.findAll({
         where: {
             CategoryId: CategoryId

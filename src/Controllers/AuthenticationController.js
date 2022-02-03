@@ -4,7 +4,7 @@ const TokenService = require("../AuthMiddleware/TokenService");
 const { cryptPassword, comparePassword } = require("../Utils/Cryptography");
 const db = require("../Sequelize/database");
 
-exports.login = async function (req, res) {
+exports.login = async (req, res) => {
     try {
         let admin = await getAdminByUsername(req.body.AdminUsername).catch(error => { throw error });
 
@@ -31,7 +31,7 @@ exports.login = async function (req, res) {
     }
 }
 
-exports.addAdmin = async function (req, res) {
+exports.addAdmin = async (req, res) => {
     try {
         req.body.AdminPassword = await cryptPassword(req.body.AdminPassword);
         const admin = db.Admins.build(req.body);
@@ -50,7 +50,7 @@ exports.addAdmin = async function (req, res) {
     }
 }
 
-exports.editAdmin = async function (req, res) {
+exports.editAdmin = async (req, res) => {
     try {
         await db.Admins.update({
             AdminUsername: req.body.AdminUsername,
@@ -75,7 +75,7 @@ exports.editAdmin = async function (req, res) {
     }
 }
 
-exports.removeAdmin = async function (req, res) {
+exports.removeAdmin = async (req, res) => {
     try {
         await db.Admins.destroy({
             where: {

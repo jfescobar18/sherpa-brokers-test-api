@@ -2,7 +2,7 @@ const HttpCodes = require("../Utils/HttpCodes");
 const ResponseCodes = require("../Utils/ResponseCodes");
 const db = require("../Sequelize/database");
 
-exports.getProducts = async function (req, res) {
+exports.getProducts = async (req, res) => {
     try {
         const products = await db.Products.findAll();
 
@@ -18,7 +18,7 @@ exports.getProducts = async function (req, res) {
     }
 }
 
-exports.getProduct = async function (req, res) {
+exports.getProduct = async (req, res) => {
     try {
         const product = await db.Products.findAll({
             where: {
@@ -38,7 +38,7 @@ exports.getProduct = async function (req, res) {
     }
 }
 
-exports.addProduct = async function (req, res) {
+exports.addProduct = async (req, res) => {
     try {
         const product = db.Products.build(req.body);
         await product.save();
@@ -56,7 +56,7 @@ exports.addProduct = async function (req, res) {
     }
 }
 
-exports.editProduct = async function (req, res) {
+exports.editProduct = async (req, res) => {
     try {
         checkProductChanges(req.body);
         await db.Products.update({
@@ -83,7 +83,7 @@ exports.editProduct = async function (req, res) {
     }
 }
 
-exports.removeProduct = async function (req, res) {
+exports.removeProduct = async (req, res) => {
     try {
         await db.Products.destroy({
             where: {
