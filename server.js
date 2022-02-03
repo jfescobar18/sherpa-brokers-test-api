@@ -34,6 +34,12 @@ app.get("/", function (req, res) {
 const AuthenticationRoutes = require("./src/Routes/AuthenticationRoutes")();
 app.use("/api/auth", AuthenticationRoutes);
 
+const CategoriesRoutes = require("./src/Routes/CategoriesRoutes")();
+app.use("/api/categories", CategoriesRoutes);
+
+const ProductsRoutes = require("./src/Routes/ProductsRoutes")();
+app.use("/api/products", ProductsRoutes);
+
 function printServerInfo() {
     var dateTime = new Date();
     var message = `Server runnning on Port:- ${process.env.PORT} Started at :- ${dateTime}`;
