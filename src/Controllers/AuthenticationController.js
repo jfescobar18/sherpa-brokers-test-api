@@ -99,9 +99,7 @@ const getAdminByUsername = async function (AdminUsername) {
     try {
         const admin = await db.Admins.findAll({
             where: {
-                AdminUsername: {
-                    [db.Op.eq]: AdminUsername
-                }
+                AdminUsername: AdminUsername
             }
         });
 
