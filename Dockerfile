@@ -19,5 +19,8 @@ ENV PORT 3000
 ENV AWS_DB sherpa-brokers-test-db
 ENV AWS_DB_USER sherpa-brokers-user
 ENV AWS_DB_SECRET Se@d0gs4rena
+ENV HOST_SMTP smtp.gmail.com
+ENV USER_SMTP fraescruz@gmail.com
+ENV PASSWORD_SMTP ANTOHE2011040399
 
 EXPOSE 3000
