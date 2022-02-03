@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Products` (
     PRIMARY KEY ( `ProductId` ),
     CONSTRAINT `CategoryId_FK`
         FOREIGN KEY ( `CategoryId` ) 
-        REFERENCES `CategoryId`( `CategoryId` )
+        REFERENCES `Categories`( `CategoryId` )
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
