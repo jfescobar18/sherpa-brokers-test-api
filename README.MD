@@ -22,7 +22,7 @@ ENV USER_SMTP EMAIL_ADDRESS
 ENV PASSWORD_SMTP EMAIL_PASSWORD
 ```
 
-By default `443` port is exposed in `Dockerfile`, change the ports you need in `docker-compose.yml`
+There is not exposed port, add the one you prefer 
 
 ```
 version: '3.2'
@@ -48,6 +48,11 @@ However you can use only Docker
 $ docker build . -t sherpa-brokers-test-api
 $ docker run -dp 3000:3000 sherpa-brokers-test-api
 ```
+
+## Heroku Deployment
+
+- Set the `ENV` variables described above in settings
+- Connect with GitHub and publish main branch
 
 ## Sequelize-auto
 
